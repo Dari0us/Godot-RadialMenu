@@ -3,6 +3,7 @@
 extends Control
 class_name RadialMenu
 
+#GIT
 
  #ENSURE THAT RadialMenuBus.gd in Scripts is set as a Global script in Autoload
 var bus_script = preload("res://RadialMenu/Scripts/RadialMenuBus.gd").new()
