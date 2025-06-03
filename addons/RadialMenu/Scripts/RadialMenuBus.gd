@@ -67,6 +67,55 @@ var menu_construct_test: Dictionary = {
 	}
 }
 
+var menu_construct_example: Dictionary = { 
+	"[EDITOR EXAMPLE CATEGORY 0]": {
+		"icon": ICON_PATH+"UI_TESTICON.png",
+		"description": "Check The Documentation In The RadialMenu Folder",
+		"command": "example_command",
+	},
+	"[EDITOR EXAMPLE CATEGORY 1]": {
+		"icon": ICON_PATH+"UI_TESTICON.png",
+		"description": "Check The Documentation In The RadialMenu Folder",
+		"command": "example_command",
+		"sub_items": {
+			"[EDITOR EXAMPLE ActionA]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command"
+			},
+			"[EDITOR EXAMPLE ActionB]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command"
+			},
+			"[EDITOR EXAMPLE ActionC]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command"
+			}
+		}
+	},
+	"[EDITOR EXAMPLE CATEGORY 2]": {
+		"icon": ICON_PATH+"UI_TESTICON.png",
+		"description": "Check The Documentation In The RadialMenu Folder",
+		"command": "example_command",
+		"sub_items": {
+			"[EDITOR EXAMPLE ActionD]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command"
+			},
+			"[EDITOR EXAMPLE ActionE]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command"
+			},
+		}
+	},
+}
+
+
+
 ##YOU CAN ADD AS MANY OF THESE DICTIONARIES HERE
 ## AS YOU WANT AND JUST SET THEM USING set_menu_construct()
 ## THIS ENTIRE SCRIPT BASICALLY ACTS AS A HOLDER FOR THE DIFFERENT CONSTRUCTS

@@ -640,6 +640,9 @@ func _update_outer_segment_keys() -> void:
 
 func set_menu_construct(construct: Dictionary) -> void:
 	menu_construct = construct
+	_setup_menu_from_construct()
+	queue_redraw()
+	_reset_menu_state()
 
 func set_menu_construct_editor_example():
 	menu_construct = menu_construct_example
@@ -694,6 +697,12 @@ func exp_lerp(current, target, delta, time_to_target):
 	return lerp(current, target, t * 0.375*clamped_motion_speed_scale)
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_down"):
+		set_menu_construct(MenuBus.menu_construct_example)
+	if Input.is_action_just_pressed("ui_up"):
+		set_menu_construct(MenuBus.menu_construct_test)
+	
+	
 	if not is_visible_in_tree():
 		return
 	
