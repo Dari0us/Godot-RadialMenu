@@ -697,12 +697,6 @@ func exp_lerp(current, target, delta, time_to_target):
 	return lerp(current, target, t * 0.375*clamped_motion_speed_scale)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_down"):
-		set_menu_construct(MenuBus.menu_construct_example)
-	if Input.is_action_just_pressed("ui_up"):
-		set_menu_construct(MenuBus.menu_construct_test)
-	
-	
 	if not is_visible_in_tree():
 		return
 	
