@@ -1,4 +1,5 @@
 ![RadialMenuExampleGif](https://github.com/user-attachments/assets/3e071c9c-d779-4322-97ca-dc9e2a5cc8bb)
+![zbsdgh](https://github.com/user-attachments/assets/2d1816c9-4b89-4a72-a7a1-c47011adcc1f)
 
 
 RadialMenu Plugin Documentation
@@ -41,6 +42,7 @@ Menu Structure & Commands
 - Menu layouts (constructs) and command methods are defined in `RadialMenuBus.gd`.
 - Each menu "construct" is a Dictionary defining categories, sub-items, icons, descriptions, and the command method to call.
 - To add new commands, define them as functions in `RadialMenuBus.gd` and reference their names in the menu dictionary entires named "command: ".
+- You can also swap the menu construct at runtime by calling `set_menu_construct(construct)`.
 
 Advanced Usage
 --------------
