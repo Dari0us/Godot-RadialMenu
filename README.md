@@ -8,7 +8,7 @@ RadialMenu Plugin Documentation
 Overview
 --------
 RadialMenu is a modular, plug-and-play radial menu solution for Godot (4.x).
-	It enables you to quickly add moderately customizable,
+	It enables you to quickly add customizable,
 	animated two-layer radial menus to your game or tool,
 	complete with command execution and dynamic menu structures
 	all without the need for autoloads or extra nodes.
