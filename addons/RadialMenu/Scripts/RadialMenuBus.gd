@@ -6,7 +6,7 @@ extends Node
 ##YOU CAN DEFINE ANY ICON BANK FOLDER ANYWHERE
 ## OR HARDCODE IT INTO THE DICTIONARY
 # IN THIS CASE I JUST PUT EVERYTHING IN THE GENERAL FOLDER AND REFERENCE THEM DIRECTLY
-const ICON_PATH = "res://RadialMenu/ICONS/GENERAL/"
+const ICON_PATH = "res://addons/RadialMenu/ICONS/GENERAL/"
 
 var menu_construct_test: Dictionary = {
 	"Category0": {

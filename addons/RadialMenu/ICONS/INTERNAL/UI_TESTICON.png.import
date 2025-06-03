@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://downlvey34cre"
-path="res://.godot/imported/RadialMenuClassIcon.png-4655daaf8266ce441b2350e3cf2d2209.ctex"
+uid="uid://bi72dp44xnod8"
+path="res://.godot/imported/UI_TESTICON.png-60f8f473cc989a8106c1e9c4eb082721.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RadialMenu/ICONS/INTERNAL/RadialMenuClassIcon.png"
-dest_files=["res://.godot/imported/RadialMenuClassIcon.png-4655daaf8266ce441b2350e3cf2d2209.ctex"]
+source_file="res://addons/RadialMenu/ICONS/INTERNAL/UI_TESTICON.png"
+dest_files=["res://.godot/imported/UI_TESTICON.png-60f8f473cc989a8106c1e9c4eb082721.ctex"]
 
 [params]
 

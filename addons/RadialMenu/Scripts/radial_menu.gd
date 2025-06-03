@@ -1,12 +1,12 @@
 @tool
-@icon("res://RadialMenu/ICONS/INTERNAL/RadialMenuClassIcon.png")
+@icon("res://addons/RadialMenu/ICONS/INTERNAL/RadialMenuClassIcon.png")
 extends Control
 class_name RadialMenu
 
 #GIT
 
  #ENSURE THAT RadialMenuBus.gd in Scripts is set as a Global script in Autoload
-var bus_script = preload("res://RadialMenu/Scripts/RadialMenuBus.gd").new()
+var bus_script = preload("res://addons/RadialMenu/Scripts/RadialMenuBus.gd").new()
 var MenuBus = bus_script
 
 @export_category("Customization Parameters")
@@ -167,7 +167,7 @@ var _target_extrusion_factor: float = 0.0
 @export var inner_font_size_margin: float = 0.5
 
 @export var center_back_margin_fraction: float = 0.6 # Fraction of inner_ring_inner_edge for back zone
-@export var back_icon: Texture2D = preload("res://RadialMenu/ICONS/INTERNAL/UI_BACK.png") # Set your X/back icon path here
+@export var back_icon: Texture2D = preload("res://addons/RadialMenu/ICONS/INTERNAL/UI_BACK.png") # Set your X/back icon path here
 
 @export_group("Misc")
 @export_range(0.25, 4.0, 0.01) var motion_speed_scale: float = 1.0
@@ -177,7 +177,7 @@ var _target_extrusion_factor: float = 0.0
 
 
 ##THIS IS INTENDED FOR THE IN-EDITOR EXAMPLE / INTERNAL DEFAULTS
-const ICON_PATH = "res://RadialMenu/ICONS/INTERNAL/"
+const ICON_PATH = "res://addons/RadialMenu/ICONS/INTERNAL/"
 
 ##THE COMMANDS OF THIS CONSTRUCT WONT WORK, AND DONT NEED TO,
 ##THIS IS INTENDED TO BE A PREVIEW IN-EDITOR
