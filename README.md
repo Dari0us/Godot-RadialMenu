@@ -25,7 +25,6 @@ Quick Start
 -----------
 1. **Add to your project:**
    - Copy the `RadialMenu` folder (containing scripts and icons) into your Godot project.
-		(The one that contains this documentation)
 
 2. **Add to your scene:** 
    - Add a `RadialMenu` node to your scene, like any other node.
