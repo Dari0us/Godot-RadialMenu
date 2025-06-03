@@ -12,7 +12,7 @@ var MenuBus = bus_script
 @export_category("Customization Parameters")
 
 @export_group("Color Palette")
-@export var unselected_segment_color: Color = Color(0.173, 0.183, 0.203) :
+@export var unselected_segment_color: Color = Color(0.17, 0.18, 0.2, 0.529) :
 	set(value):
 		unselected_segment_color = value
 		queue_redraw()
