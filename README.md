@@ -45,7 +45,7 @@ Menu Structure & Commands
 Advanced Usage
 --------------
 - If you want to provide your own menu bus, you can replace or inherit from the default bus script and change the preload path at the top of `RadialMenu.gd`.
-- Multiple independent menus can coexist—each with their own bus instance if desired.
+- Multiple independent menus can coexist, but the intended way is to switch menu constructs.
 - No global setup or Autoload is required, but you may adapt the architecture if your game would benefit from a shared singleton.
 - It's possible to make realtime menu constructs procedurally, as long as you follow the example pattern.
 
