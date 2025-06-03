@@ -42,6 +42,7 @@ Menu Structure & Commands
 - Menu layouts (constructs) and command methods are defined in `RadialMenuBus.gd`.
 - Each menu "construct" is a Dictionary defining categories, sub-items, icons, descriptions, and the command method to call.
 - To add new commands, define them as functions in `RadialMenuBus.gd` and reference their names in the menu dictionary entires named "command: ".
+- You can also swap the menu construct at runtime by calling `set_menu_construct(construct)`.
 
 Advanced Usage
 --------------
