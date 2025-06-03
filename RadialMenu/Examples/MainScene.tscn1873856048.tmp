@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtl8kadpyciv2"]
+
+[ext_resource type="Script" uid="uid://1d25hho0n4f8" path="res://RadialMenu/Scripts/radial_menu.gd" id="1_aem0p"]
+
+[sub_resource type="SystemFont" id="SystemFont_x4av3"]
+
+[sub_resource type="SystemFont" id="SystemFont_rpqi1"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RadialMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aem0p")
+title_font = SubResource("SystemFont_x4av3")
+hint_font = SubResource("SystemFont_rpqi1")

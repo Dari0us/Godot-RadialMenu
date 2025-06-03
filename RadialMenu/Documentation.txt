@@ -1,0 +1,69 @@
+RadialMenu Plugin Documentation
+==============================
+
+Overview
+--------
+RadialMenu is a modular, plug-and-play radial menu solution for Godot (4.x).
+	It enables you to quickly add moderately customizable,
+	animated two-layer radial menus to your game or tool,
+	complete with command execution and dynamic menu structures
+	all without the need for autoloads or extra nodes.
+
+Features
+--------
+- Plug-and-play: Just add the RadialMenu node to your scene.
+- Self-contained: No Autoload/singleton or extra nodes required.
+- Customizable: Colors, fonts, sizes, margins, icons, and animation speeds are all exposed via exported variables.
+- Supports nested menus and dynamic command execution.
+- Editor-friendly: Provides a built-in example construct for previewing in the editor.
+- Modular: Swap out or customize menu constructs and commands easily by editing or subclassing the bus script.
+
+Quick Start
+-----------
+1. **Add to your project:**
+   - Copy the `RadialMenu` folder (containing scripts and icons) into your Godot project.
+		(The one that contains this documentation)
+
+2. **Add to your scene:** 
+   - Add a `RadialMenu` node to your scene, like any other node.
+   - Anchor as FullRect or whatever fits your needs.
+   - The menu is ready to use—no further setup is needed for basic functionality.
+
+3. **Customize:**
+   - Adjust appearance and behavior using exported variables in the Inspector.
+   - To change menu structure or commands, edit `RadialMenu/Scripts/RadialMenuBus.gd`.
+   - You can also swap the menu construct at runtime by calling `set_menu_construct()`.
+
+Menu Structure & Commands
+-------------------------
+- Menu layouts (constructs) and command methods are defined in `RadialMenuBus.gd`.
+- Each menu "construct" is a Dictionary defining categories, sub-items, icons, descriptions, and the command method to call.
+- To add new commands, define them as functions in `RadialMenuBus.gd` and reference their names in the menu dictionary entires named "command: ".
+
+Advanced Usage
+--------------
+- If you want to provide your own menu bus, you can replace or inherit from the default bus script and change the preload path at the top of `RadialMenu.gd`.
+- Multiple independent menus can coexist—each with their own bus instance if desired.
+- No global setup or Autoload is required, but you may adapt the architecture if your game would benefit from a shared singleton.
+- It's possible to make realtime menu constructs procedurally, as long as you follow the example pattern.
+
+
+Notes & Tips
+------------
+- Do not use FontFile resources for text fields; use SystemFont OR FontVariation for proper text wrapping.
+- The default editor example menu construct is safe for previewing and experimentation.
+- All menu animation respects real-world time, unaffected by Engine.time_scale or Framerate.
+
+Troubleshooting
+---------------
+- If icons or fonts don't show, check that resource paths are correct.
+- If you want to override commands or add new ones, edit or inherit `RadialMenuBus.gd`.
+
+License
+-------
+MIT License
+
+Credits
+-------
+Author: Dari0us
+Special thanks to the Godot community!
