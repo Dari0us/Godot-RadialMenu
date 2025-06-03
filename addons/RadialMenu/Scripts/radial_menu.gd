@@ -12,7 +12,7 @@ var MenuBus = bus_script
 @export_category("Customization Parameters")
 
 @export_group("Color Palette")
-@export var unselected_segment_color: Color = Color(0.17, 0.18, 0.2, 0.529) :
+@export var unselected_segment_color: Color = Color(0.196, 0.207, 0.23, 0.784) :
 	set(value):
 		unselected_segment_color = value
 		queue_redraw()
@@ -27,7 +27,7 @@ var MenuBus = bus_script
 		selected_segment_color = value
 		queue_redraw()
 
-@export var background_fill_color: Color = Color(0.098, 0.132, 0.16, 0.18) :
+@export var background_fill_color: Color = Color(0.272, 0.298, 0.32, 0.784) :
 	set(value):
 		background_fill_color = value
 		queue_redraw()
