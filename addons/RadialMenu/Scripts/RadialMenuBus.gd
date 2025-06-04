@@ -8,121 +8,140 @@ extends Node
 # IN THIS CASE I JUST PUT EVERYTHING IN THE GENERAL FOLDER AND REFERENCE THEM DIRECTLY
 const ICON_PATH = "res://addons/RadialMenu/ICONS/GENERAL/"
 
-var menu_construct_test: Dictionary = {
-	"Category0": {
-		"icon": ICON_PATH+"UI_TESTICON.png",
-		"description": "Run a quick action.",
-		"command": "immediate_category", ##SCROLL DOWN TO SEE THE EXAMPLE FUNCTION
-	},
-	"Category1": {
-		"icon": ICON_PATH+"UI_TESTICON.png",
-		"description": "Camp and survival actions.",
-		"command": "select_category_1",
-		"sub_items": {
-			"ActionA": {
-				"icon": ICON_PATH+"ICON_CAMPFIRE.png",
-				"description": "This is a test action.",
-				"command": "bus_test_one"
-			},
-			"ActionB": {
-				"icon": ICON_PATH+"ICON_CAMPFIRE.png",
-				"description": "Set up a campfire to rest and cook.",
-				"command": "create_campfire"
-			},
-			"ActionC": {
-				"icon": ICON_PATH+"ICON_CAMPFIRE.png",
-				"description": "Another test action.",
-				"command": "bus_test_two"
+var menu_construct_example: Dictionary = { 
+	"meta_source": null,
+	"menu_construct": {
+		"[EDITOR EXAMPLE CATEGORY 0]": {
+			"icon": ICON_PATH+"UI_TESTICON.png",
+			"description": "Check The Documentation In The RadialMenu Folder",
+			"command": "example_command",
+			"meta_input": null,
+		},
+		"[EDITOR EXAMPLE CATEGORY 1]": {
+			"icon": ICON_PATH+"UI_TESTICON.png",
+			"description": "Check The Documentation In The RadialMenu Folder",
+			"command": "example_command",
+			"meta_input": null,
+			"sub_items": {
+				"[EDITOR EXAMPLE ActionA]": {
+					"icon": ICON_PATH+"UI_TESTICON2.png",
+					"description": "Check The Documentation In The RadialMenu Folder",
+					"command": "example_command",
+					"meta_input": null,
+				},
+				"[EDITOR EXAMPLE ActionB]": {
+					"icon": ICON_PATH+"UI_TESTICON2.png",
+					"description": "Check The Documentation In The RadialMenu Folder",
+					"command": "example_command",
+					"meta_input": null,
+				},
+				"[EDITOR EXAMPLE ActionC]": {
+					"icon": ICON_PATH+"UI_TESTICON2.png",
+					"description": "Check The Documentation In The RadialMenu Folder",
+					"command": "example_command",
+					"meta_input": null,
+				}
 			}
-		}
-	},
-	"Category2": {
-		"icon": ICON_PATH+"UI_TESTICON.png",
-		"description": "Resource or crafting actions.",
-		"command": "select_category_2",
-		"sub_items": {
-			"ActionD": {
-				"icon": ICON_PATH+"ICON_CAMPFIRE.png",
-				"description": "Resource gathering action.",
-				"command": "bus_test_two"
-			},
-			"ActionE": {
-				"icon": ICON_PATH+"ICON_CAMPFIRE.png",
-				"description": "Craft a useful tool.",
-				"command": "bus_test_two"
-			},
-		}
-	},
-	"Category3": {
-		"icon": ICON_PATH+"UI_TESTICON.png",
-		"description": "Advanced actions.",
-		"command": "select_category_3",
-		"sub_items": {
-			"ActionF": {
-				"icon": ICON_PATH+"ICON_CAMPFIRE.png",
-				"description": "Special advanced action.",
-				"command": "bus_test_two"
-			},
-		}
+		},
+		"[EDITOR EXAMPLE CATEGORY 2]": {
+			"icon": ICON_PATH+"UI_TESTICON.png",
+			"description": "Check The Documentation In The RadialMenu Folder",
+			"command": "example_command",
+			"meta_input": null,
+			"sub_items": {
+				"[EDITOR EXAMPLE ActionD]": {
+					"icon": ICON_PATH+"UI_TESTICON2.png",
+					"description": "Check The Documentation In The RadialMenu Folder",
+					"command": "example_command",
+					"meta_input": null,
+				},
+				"[EDITOR EXAMPLE ActionE]": {
+					"icon": ICON_PATH+"UI_TESTICON2.png",
+					"description": "Check The Documentation In The RadialMenu Folder",
+					"command": "example_command",
+					"meta_input": null,
+				},
+			}
+		},
 	}
 }
-
-var menu_construct_example: Dictionary = { 
-	"[EDITOR EXAMPLE CATEGORY 0]": {
-		"icon": ICON_PATH+"UI_TESTICON.png",
-		"description": "Check The Documentation In The RadialMenu Folder",
-		"command": "example_command",
-	},
-	"[EDITOR EXAMPLE CATEGORY 1]": {
-		"icon": ICON_PATH+"UI_TESTICON.png",
-		"description": "Check The Documentation In The RadialMenu Folder",
-		"command": "example_command",
-		"sub_items": {
-			"[EDITOR EXAMPLE ActionA]": {
-				"icon": ICON_PATH+"UI_TESTICON2.png",
-				"description": "Check The Documentation In The RadialMenu Folder",
-				"command": "example_command"
-			},
-			"[EDITOR EXAMPLE ActionB]": {
-				"icon": ICON_PATH+"UI_TESTICON2.png",
-				"description": "Check The Documentation In The RadialMenu Folder",
-				"command": "example_command"
-			},
-			"[EDITOR EXAMPLE ActionC]": {
-				"icon": ICON_PATH+"UI_TESTICON2.png",
-				"description": "Check The Documentation In The RadialMenu Folder",
-				"command": "example_command"
-			}
-		}
-	},
-	"[EDITOR EXAMPLE CATEGORY 2]": {
-		"icon": ICON_PATH+"UI_TESTICON.png",
-		"description": "Check The Documentation In The RadialMenu Folder",
-		"command": "example_command",
-		"sub_items": {
-			"[EDITOR EXAMPLE ActionD]": {
-				"icon": ICON_PATH+"UI_TESTICON2.png",
-				"description": "Check The Documentation In The RadialMenu Folder",
-				"command": "example_command"
-			},
-			"[EDITOR EXAMPLE ActionE]": {
-				"icon": ICON_PATH+"UI_TESTICON2.png",
-				"description": "Check The Documentation In The RadialMenu Folder",
-				"command": "example_command"
-			},
-		}
-	},
-}
-
-
 
 ##YOU CAN ADD AS MANY OF THESE DICTIONARIES HERE
 ## AS YOU WANT AND JUST SET THEM USING set_menu_construct()
 ## THIS ENTIRE SCRIPT BASICALLY ACTS AS A HOLDER FOR THE DIFFERENT CONSTRUCTS
 
 
-
-
+var menu_construct_test: Dictionary = {
+	"meta_source": null,
+	"menu_construct": {
+		"Category0": {
+			"icon": ICON_PATH+"UI_TESTICON.png",
+			"description": "Run a quick action.",
+			"command": "immediate_category",
+			"meta_input": null,
+		},
+		"Category1": {
+			"icon": ICON_PATH+"UI_TESTICON.png",
+			"description": "Camp and survival actions.",
+			"command": "select_category_1",
+			"meta_input": null,
+			"sub_items": {
+				"ActionA": {
+					"icon": ICON_PATH+"ICON_CAMPFIRE.png",
+					"description": "This is a test action.",
+					"command": "bus_test_one",
+					"meta_input": null,
+				},
+				"ActionB": {
+					"icon": ICON_PATH+"ICON_CAMPFIRE.png",
+					"description": "Set up a campfire to rest and cook.",
+					"command": "create_campfire",
+					"meta_input": null,
+				},
+				"METASOURCE TEST": {
+					"icon": ICON_PATH+"UI_TESTICON2.png",
+					"description": "TEST METASOURCE OUTPUT",
+					"command": "bus_test_two",
+					"meta_input": 1, #in this case, the id of the item
+				}
+			}
+		},
+		"Category2": {
+			"icon": ICON_PATH+"UI_TESTICON.png",
+			"description": "Resource or crafting actions.",
+			"command": "select_category_2",
+			"meta_input": null,
+			"sub_items": {
+				"ActionD": {
+					"icon": ICON_PATH+"ICON_CAMPFIRE.png",
+					"description": "Resource gathering action.",
+					"command": "bus_test_two",
+					"meta_input": null,
+				},
+				"ActionE": {
+					"icon": ICON_PATH+"ICON_CAMPFIRE.png",
+					"description": "Craft a useful tool.",
+					"command": "bus_test_two",
+					"meta_input": null,
+				},
+			}
+		},
+		"Category3": {
+			"icon": ICON_PATH+"UI_TESTICON.png",
+			"description": "Advanced actions.",
+			"command": "select_category_3",
+			"meta_input": null,
+			"sub_items": {
+				"ActionF": {
+					"icon": ICON_PATH+"ICON_CAMPFIRE.png",
+					"description": "Special advanced action.",
+					"command": "bus_test_two",
+					"meta_input": null,
+				},
+			}
+		}
+	}
+}
 
 ### DEFAULT BUILD MENU METHODS
 
@@ -138,3 +157,12 @@ func create_campfire():
 func immediate_category():
 	#RUN ANY CODE HERE, PRINTS TO PROVE THAT IT WORKS
 	print("IMMEDIATE CATEGORY TEST SUCCESSFUL")
+	
+
+
+
+
+
+
+
+##

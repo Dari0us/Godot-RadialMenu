@@ -15,6 +15,10 @@ run/main_scene="uid://dtl8kadpyciv2"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TestInventory="*res://addons/RadialMenu/Temp/TEST_INVENTORY.gd"
+
 [display]
 
 window/size/borderless=true
