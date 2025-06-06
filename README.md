@@ -116,7 +116,7 @@ EXAMPLE CODE
 
 Example:
 "
-
+```gdscript
 var test_source : Dictionary = {
 	"apple":{
 		"hp": 5,
@@ -203,7 +203,7 @@ func meta_source_example_command(source : Dictionary, input):
 	var data1 = source.get(element).get(datanames[0])
 	var data2 = source.get(element).get(datanames[1])
 	print("META RESULT: ",element," / ",datanames[0],": ",data1," / ",datanames[1],": ",data2)
-
+```
 "
 and then, for example, setting it like so:
 	$RadialMenu.set_menu_construct(my_menu)
