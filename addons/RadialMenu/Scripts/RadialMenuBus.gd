@@ -11,11 +11,11 @@ const ICON_PATH = "res://addons/RadialMenu/ICONS/GENERAL/"
 var test_source : Dictionary = {
 	"apple":{
 		"hp": 5,
-		"potassium n sht": "an apples worth"
+		"potassium": "an apples worth"
 	},
 	"banana":{
 		"hp": 10,
-		"potassium n sht": "a lot"
+		"potassium": "a lot"
 	},
 }
 
@@ -170,8 +170,10 @@ var menu_construct_example: Dictionary = {
 
 func meta_source_test(source : Dictionary,input):
 	var element = source.keys()[input]
-	var data = source.get(element).get("hp")
-	print("META RESULT: ",element," / ",data)
+	var datanames = ["hp","potassium"]
+	var data1 = source.get(element).get(datanames[0])
+	var data2 = source.get(element).get(datanames[1])
+	print("META RESULT: ",element," / ",datanames[0],": ",data1," / ",datanames[1],": ",data2)
 
 func bus_test_one():
 	print("BUS TEST [ONE] SUCCESSFUL")

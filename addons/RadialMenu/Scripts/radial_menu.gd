@@ -7,6 +7,8 @@ class_name RadialMenu
 var bus_script = preload("res://addons/RadialMenu/Scripts/RadialMenuBus.gd").new()
 var MenuBus = bus_script
 
+var inputs = ["ui_accept"] #ADD AS MANY AS YOU NEED
+
 @export_category("Customization Parameters")
 
 @export_group("Color Palette")
@@ -845,106 +847,105 @@ func _process(delta: float) -> void:
 		update_context_elements()
 
 	var is_mouse_in_center_back = mouse_distance <= center_back_radius
-
-	if Input.is_action_just_pressed("ui_accept"):
-		_immediate_selected_inner_segment_index = -1
-
-		if _current_menu_state == MenuState.INNER_RING_UNSELECTED:
-			if _hovered_inner_segment_index != -1:
-				var inner_item_key = _get_inner_segment_key(_hovered_inner_segment_index)
-				var item_data = menu_construct.get(inner_item_key, {})
-				if item_data.has("sub_items") and item_data["sub_items"].size() > 0:
-					_selected_inner_segment_index = _hovered_inner_segment_index
-				elif item_data.has("command") and item_data["command"] != "":
-					var meta_source = null
-					var meta_input = null
-					if item_data.has("meta_source") and item_data["meta_source"] != null:
-						meta_source = item_data["meta_source"]
-					if item_data.has("meta_input") and item_data["meta_input"] != null:
-						meta_input = item_data["meta_input"]
-					_execute_command(
-						item_data["command"],
-						{"ring": "inner", "key": inner_item_key, "index": _hovered_inner_segment_index},
-						meta_source,
-						meta_input
-					)
-					_selected_inner_segment_index = -1
-					_selected_outer_segment_index = -1
-					_update_outer_segment_keys()
-					queue_redraw()
+	for action in inputs:
+		if Input.is_action_just_pressed(action):
+			_immediate_selected_inner_segment_index = -1
+			if _current_menu_state == MenuState.INNER_RING_UNSELECTED:
+				if _hovered_inner_segment_index != -1:
+					var inner_item_key = _get_inner_segment_key(_hovered_inner_segment_index)
+					var item_data = menu_construct.get(inner_item_key, {})
+					if item_data.has("sub_items") and item_data["sub_items"].size() > 0:
+						_selected_inner_segment_index = _hovered_inner_segment_index
+					elif item_data.has("command") and item_data["command"] != "":
+						var meta_source = null
+						var meta_input = null
+						if item_data.has("meta_source") and item_data["meta_source"] != null:
+							meta_source = item_data["meta_source"]
+						if item_data.has("meta_input") and item_data["meta_input"] != null:
+							meta_input = item_data["meta_input"]
+						_execute_command(
+							item_data["command"],
+							{"ring": "inner", "key": inner_item_key, "index": _hovered_inner_segment_index},
+							meta_source,
+							meta_input
+						)
+						_selected_inner_segment_index = -1
+						_selected_outer_segment_index = -1
+						_update_outer_segment_keys()
+						queue_redraw()
+					else:
+						_selected_inner_segment_index = -1
+						_selected_outer_segment_index = -1
+						_update_outer_segment_keys()
+						queue_redraw()
 				else:
 					_selected_inner_segment_index = -1
 					_selected_outer_segment_index = -1
 					_update_outer_segment_keys()
 					queue_redraw()
-			else:
-				_selected_inner_segment_index = -1
-				_selected_outer_segment_index = -1
-				_update_outer_segment_keys()
-				queue_redraw()
-		elif _current_menu_state == MenuState.INNER_RING_SELECTED:
-			if _hovered_inner_segment_index != -1:
-				var inner_item_key = _get_inner_segment_key(_hovered_inner_segment_index)
-				var item_data = menu_construct.get(inner_item_key, {})
-				if ((not item_data.has("sub_items") or item_data["sub_items"].size() == 0) and item_data.has("command") and item_data["command"] != ""):
-					var meta_source = null
-					var meta_input = null
-					if item_data.has("meta_source") and item_data["meta_source"] != null:
-						meta_source = item_data["meta_source"]
-					if item_data.has("meta_input") and item_data["meta_input"] != null:
-						meta_input = item_data["meta_input"]
-					_execute_command(
-						item_data["command"],
-						{"ring": "inner", "key": inner_item_key, "index": _hovered_inner_segment_index},
-						meta_source,
-						meta_input
-					)
+			elif _current_menu_state == MenuState.INNER_RING_SELECTED:
+				if _hovered_inner_segment_index != -1:
+					var inner_item_key = _get_inner_segment_key(_hovered_inner_segment_index)
+					var item_data = menu_construct.get(inner_item_key, {})
+					if ((not item_data.has("sub_items") or item_data["sub_items"].size() == 0) and item_data.has("command") and item_data["command"] != ""):
+						var meta_source = null
+						var meta_input = null
+						if item_data.has("meta_source") and item_data["meta_source"] != null:
+							meta_source = item_data["meta_source"]
+						if item_data.has("meta_input") and item_data["meta_input"] != null:
+							meta_input = item_data["meta_input"]
+						_execute_command(
+							item_data["command"],
+							{"ring": "inner", "key": inner_item_key, "index": _hovered_inner_segment_index},
+							meta_source,
+							meta_input
+						)
+						_selected_inner_segment_index = -1
+						_selected_outer_segment_index = -1
+						_update_outer_segment_keys()
+						queue_redraw()
+					elif _hovered_inner_segment_index == _selected_inner_segment_index:
+						_selected_inner_segment_index = -1
+						_selected_outer_segment_index = -1
+						_update_outer_segment_keys()
+						queue_redraw()
+					else:
+						_selected_inner_segment_index = _hovered_inner_segment_index
+						_selected_outer_segment_index = -1
+						_update_outer_segment_keys()
+						queue_redraw()
+				elif _hovered_outer_segment_index != -1:
+					_selected_outer_segment_index = _hovered_outer_segment_index
+					var outer_item_key = _get_outer_segment_key(_selected_outer_segment_index)
+					var category_data = menu_construct.get(_get_inner_segment_key(_selected_inner_segment_index), {})
+					var sub_items = category_data.get("sub_items", {})
+					var item_data = sub_items.get(outer_item_key, {})
+					var command_method_name = item_data.get("command", "")
+					if command_method_name != "":
+						var meta_source = null
+						var meta_input = null
+						if item_data.has("meta_source") and item_data["meta_source"] != null:
+							meta_source = item_data["meta_source"]
+						if item_data.has("meta_input") and item_data["meta_input"] != null:
+							meta_input = item_data["meta_input"]
+						_execute_command(
+							command_method_name,
+							{
+								"ring": "outer",
+								"category_key": _get_inner_segment_key(_selected_inner_segment_index),
+								"key": outer_item_key,
+								"index": _selected_outer_segment_index
+							},
+							meta_source,
+							meta_input
+						)
+					_update_outer_segment_keys()
+					queue_redraw()
+				elif is_mouse_in_center_back:
 					_selected_inner_segment_index = -1
 					_selected_outer_segment_index = -1
 					_update_outer_segment_keys()
 					queue_redraw()
-				elif _hovered_inner_segment_index == _selected_inner_segment_index:
-					_selected_inner_segment_index = -1
-					_selected_outer_segment_index = -1
-					_update_outer_segment_keys()
-					queue_redraw()
-				else:
-					_selected_inner_segment_index = _hovered_inner_segment_index
-					_selected_outer_segment_index = -1
-					_update_outer_segment_keys()
-					queue_redraw()
-			elif _hovered_outer_segment_index != -1:
-				_selected_outer_segment_index = _hovered_outer_segment_index
-				var outer_item_key = _get_outer_segment_key(_selected_outer_segment_index)
-				var category_data = menu_construct.get(_get_inner_segment_key(_selected_inner_segment_index), {})
-				var sub_items = category_data.get("sub_items", {})
-				var item_data = sub_items.get(outer_item_key, {})
-				var command_method_name = item_data.get("command", "")
-				if command_method_name != "":
-					var meta_source = null
-					var meta_input = null
-					if item_data.has("meta_source") and item_data["meta_source"] != null:
-						meta_source = item_data["meta_source"]
-					if item_data.has("meta_input") and item_data["meta_input"] != null:
-						meta_input = item_data["meta_input"]
-					_execute_command(
-						command_method_name,
-						{
-							"ring": "outer",
-							"category_key": _get_inner_segment_key(_selected_inner_segment_index),
-							"key": outer_item_key,
-							"index": _selected_outer_segment_index
-						},
-						meta_source,
-						meta_input
-					)
-				_update_outer_segment_keys()
-				queue_redraw()
-			elif is_mouse_in_center_back:
-				_selected_inner_segment_index = -1
-				_selected_outer_segment_index = -1
-				_update_outer_segment_keys()
-				queue_redraw()
 
 func _execute_command(method_name: String, data: Dictionary = {}, meta_source = null, meta_input = null) -> void:
 	var global_commands = MenuBus
