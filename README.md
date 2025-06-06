@@ -196,7 +196,7 @@ func meta_source_example_command(source : Dictionary, input):
 "
 and then, for example, setting it like so:
 ```gdscript
-$RadialMenu.set_menu_construct(my_menu)
+$RadialMenu.set_menu_construct(menu_construct_example)
 ```
 
 
