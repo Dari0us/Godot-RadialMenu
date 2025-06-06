@@ -195,8 +195,9 @@ func meta_source_example_command(source : Dictionary, input):
 ```
 "
 and then, for example, setting it like so:
-	$RadialMenu.set_menu_construct(my_menu)
-
+```gdscript
+$RadialMenu.set_menu_construct(my_menu)
+```
 
 
 License
