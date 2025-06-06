@@ -22,7 +22,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aem0p")
-menu_padding_unit = 25.0
 title_font = SubResource("SystemFont_fxo61")
 hint_font = SubResource("SystemFont_e24fh")
 metadata/_custom_type_script = "uid://1d25hho0n4f8"
