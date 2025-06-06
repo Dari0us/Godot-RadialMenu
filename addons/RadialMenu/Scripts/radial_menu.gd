@@ -1,3 +1,9 @@
+##
+## WARNING! DO NOT MODIFY THIS FILE UNLESS YOU KNOW EXACTLY WHAT YOU'RE DOING.
+## THIS BACKEND IS MEANT TO BE A STABLE FOUNDATION FOR ALL RADIAL MENUS.
+## ANY CUSTOMIZATION SHOULD BE DONE AT THE SURFACE LEVEL (MENU CONSTRUCTS ETC).
+##
+
 @tool
 @icon("res://addons/RadialMenu/ICONS/INTERNAL/RadialMenuClassIcon.png")
 extends Control
@@ -607,12 +613,19 @@ func _setup_menu_from_construct() -> void:
 	_loaded_icon_textures.clear()
 	for category_key in _inner_segment_keys:
 		var category_data = menu_construct[category_key]
+##---------------------------------------------------------
+## WARNING
+## YOU CRASHED HERE BECAUSE YOUR MENU CONSTRUCT DICTIONARY
+## PATTERN IS INVALID. DOUBLE CHECK AND COMPARE TO AN EXAMPLE.
+## WARNING
+##---------------------------------------------------------
 		if category_data.has("icon"):
 			var full_icon_path = category_data["icon"]
 			if full_icon_path != "" and not _loaded_icon_textures.has(full_icon_path):
 				var texture = load(full_icon_path)
 				if texture:
 					_loaded_icon_textures[full_icon_path] = texture
+		
 		if category_data.has("sub_items"):
 			for sub_item_key in category_data["sub_items"].keys():
 				var sub_item_data = category_data["sub_items"][sub_item_key]
