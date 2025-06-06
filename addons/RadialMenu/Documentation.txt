@@ -10,46 +10,6 @@ Basic Hard-Coded Usage
 ======================
 To quickly get started, you can create a menu by directly assigning a menu structure (a Dictionary) in your RadialMenuBus.gd script. The menu structure consists of categories, each with optional icons, descriptions, commands, and sub-items (for “outer ring” actions).
 
-Example:
-"var menu_construct_example: Dictionary = { 
-	"meta_source": null,
-	"menu_construct": {
-		"[EDITOR EXAMPLE CATEGORY 0]": {
-			"icon": ICON_PATH+"UI_TESTICON.png",
-			"description": "Check The Documentation In The RadialMenu Folder",
-			"command": "example_command",
-			"meta_input": null,
-		},
-		"[EDITOR EXAMPLE CATEGORY 1]": {
-			"icon": ICON_PATH+"UI_TESTICON.png",
-			"description": "Check The Documentation In The RadialMenu Folder",
-			"command": "example_command",
-			"meta_input": null,
-			"sub_items": {
-				"[EDITOR EXAMPLE ActionA]": {
-					"icon": ICON_PATH+"UI_TESTICON2.png",
-					"description": "Check The Documentation In The RadialMenu Folder",
-					"command": "example_command",
-					"meta_input": null,
-				},
-				"[EDITOR EXAMPLE ActionB]": {
-					"icon": ICON_PATH+"UI_TESTICON2.png",
-					"description": "Check The Documentation In The RadialMenu Folder",
-					"command": "example_command",
-					"meta_input": null,
-				},
-			}
-		}
-	}
-}
-
-func example_command():
-	print("THIS RUNS WHEN THE BUTTON WITH THIS COMMAND IS PRESSED.")
-
-"
-and then, for example, setting it like so:
-	$RadialMenu.set_menu_construct(my_menu)
-
 
 Hints and Tips
 ---------------
@@ -69,11 +29,10 @@ Tips for Dynamic Usage:
 - If you want to pass additional metadata to a command,
 	add a `"meta_input"` key to your item,
 	which corresponds to a valid reference in the meta_source
-	at the top of your menu construct
 	(like an array or a dictionary key index being the meta_input,
 		and the array or dictionary itself being the meta_source)
 
-- Use your own code to generate menu items based on the input source (meta source (dictionary or array) ),
+- Use your own code to generate menu items based on the input source (meta source (dictionary or array) (check out the example code at the bottom of this doc with test_source and menu_construct_example) ),
 	which can range from things like game state, inventory, player progress, etc.
 
 - The menu will automatically update and reset its state, segments and sub-segments when you call `set_menu_construct()`.
@@ -92,6 +51,106 @@ Troubleshooting
 ---------------
 - If icons or fonts don't show, check that resource paths are correct.
 - If you want to override commands or add new ones, edit or inherit `RadialMenuBus.gd`.
+
+
+EXAMPLE CODE
+------------
+
+Example:
+"
+
+var test_source : Dictionary = {
+	"apple":{
+		"hp": 5,
+		"potassium": "an apples worth"
+	},
+	"banana":{
+		"hp": 10,
+		"potassium": "a lot"
+	},
+}
+
+var menu_construct_example: Dictionary = { 
+	"[EDITOR EXAMPLE CATEGORY 0]": {
+		"icon": ICON_PATH+"UI_TESTICON.png",
+		"description": "Check The Documentation In The RadialMenu Folder",
+		"command": "example_command",
+		"meta_source": test_source,
+		"meta_input": 0, #id 0 being "apple" in the test source
+	},
+	"[EDITOR EXAMPLE CATEGORY 1]": {
+		"icon": ICON_PATH+"UI_TESTICON.png",
+		"description": "Check The Documentation In The RadialMenu Folder",
+		"command": "example_command",
+		"meta_source": null,
+		"meta_input": null,
+		"sub_items": {
+			"[EDITOR EXAMPLE ActionA]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command",
+				"meta_source": null,
+				"meta_input": null,
+			},
+			"[EDITOR EXAMPLE ActionB]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command",
+				"meta_source": null,
+				"meta_input": null,
+			},
+			"[EDITOR EXAMPLE ActionC]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command",
+				"meta_source": null,
+				"meta_input": null,
+			}
+		}
+	},
+	"[EDITOR EXAMPLE CATEGORY 2]": {
+		"icon": ICON_PATH+"UI_TESTICON.png",
+		"description": "Check The Documentation In The RadialMenu Folder",
+		"command": "example_command",
+		"meta_source": null,
+		"meta_input": null,
+		"sub_items": {
+			"[EDITOR EXAMPLE ActionD]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command",
+				"meta_source": null,
+				"meta_input": null,
+			},
+			"[EDITOR EXAMPLE ActionE]": {
+				"icon": ICON_PATH+"UI_TESTICON2.png",
+				"description": "Check The Documentation In The RadialMenu Folder",
+				"command": "example_command",
+				"meta_source": null,
+				"meta_input": null,
+			},
+		}
+	},
+}
+
+func example_command():
+	print("THIS RUNS WHEN THE BUTTON WITH THIS COMMAND IS PRESSED.")
+
+
+#input can be an int or a string or anything at all,
+# ..that can be used to identify itself within the source
+func meta_source_example_command(source : Dictionary, input): 
+	var element = source.keys()[input]
+	var datanames = ["hp","potassium"]
+	var data1 = source.get(element).get(datanames[0])
+	var data2 = source.get(element).get(datanames[1])
+	print("META RESULT: ",element," / ",datanames[0],": ",data1," / ",datanames[1],": ",data2)
+
+"
+and then, for example, setting it like so:
+	$RadialMenu.set_menu_construct(my_menu)
+
+
 
 License
 -------
