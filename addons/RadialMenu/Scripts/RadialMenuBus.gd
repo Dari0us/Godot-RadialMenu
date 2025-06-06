@@ -102,9 +102,9 @@ var menu_construct_example: Dictionary = {
 	"[EDITOR EXAMPLE CATEGORY 0]": {
 		"icon": ICON_PATH+"UI_TESTICON.png",
 		"description": "Check The Documentation In The RadialMenu Folder",
-		"command": "example_command",
-		"meta_source": null,
-		"meta_input": null,
+		"command": "meta_source_test",
+		"meta_source": test_source,
+		"meta_input": 0,
 	},
 	"[EDITOR EXAMPLE CATEGORY 1]": {
 		"icon": ICON_PATH+"UI_TESTICON.png",
