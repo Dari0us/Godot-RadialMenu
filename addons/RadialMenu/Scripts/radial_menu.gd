@@ -950,11 +950,25 @@ func _process(delta: float) -> void:
 func _execute_command(method_name: String, data: Dictionary = {}, meta_source = null, meta_input = null) -> void:
 	var global_commands = MenuBus
 	if not (global_commands and global_commands.has_method(method_name)):
+		push_warning("Method '%s' does not exist on MenuBus." % method_name)
 		return
-	# Only two valid cases
-	if meta_source != null and meta_input != null:
-		global_commands.call(method_name, meta_source, meta_input)
-	elif meta_source == null and meta_input == null:
+	
+	# Determine the method's expected argument count
+	var arg_count = global_commands.get_method_argument_count(method_name)
+	
+	# Case 1: Method expects 2 args (meta_source and meta_input)
+	if arg_count == 2:
+		if meta_source != null and meta_input != null:
+			global_commands.call(method_name, meta_source, meta_input)
+		else:
+			push_warning("Method '%s' expects 2 arguments, but meta_source or meta_input is missing (meta_source: %s, meta_input: %s)" % [method_name, str(meta_source), str(meta_input)])
+	
+	# Case 2: Method expects 0 args
+	elif arg_count == 0:
 		global_commands.call(method_name)
+		if meta_source != null or meta_input != null:
+			push_warning("Method '%s' expects no arguments, but extra meta_source/meta_input provided. Ignoring." % method_name)
+	
+	# Case 3: Other argument counts (e.g., 1 or >2)
 	else:
-		push_warning("Not calling %s: meta_source and meta_input must both be null or both be filled (meta_source: %s, meta_input: %s)" % [method_name, str(meta_source), str(meta_input)])
+		push_warning("Method '%s' expects %d arguments, but this handler only supports 0 or 2." % [method_name, arg_count])
