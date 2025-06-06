@@ -166,9 +166,6 @@ var menu_construct_example: Dictionary = {
 ## THIS ENTIRE SCRIPT BASICALLY ACTS AS A HOLDER FOR THE DIFFERENT CONSTRUCTS
 
 
-
-
-
 ### DEFAULT BUILD MENU METHODS
 
 func meta_source_test(source : Dictionary,input):
