@@ -64,14 +64,6 @@ Troubleshooting
 - If you want to override commands or add new ones, edit or inherit `RadialMenuBus.gd`.
 
 
-INTRO
-=====
-RadialMenu is a plug-and-play, data-driven radial menu system for Godot 4.x. It requires no autoloads or extra nodes—just drop it into your project and customize. RadialMenu supports both hard-coded and fully dynamic menu construction, making it suitable for rapid prototyping as well as production UI/UX.
-
-HOW IT WORKS
-============
-[Explain how this is a two layer radial menu with 3 possible interaction states, and it's fluid feel]
-
 Basic Hard-Coded Usage
 ======================
 To quickly get started, you can create a menu by directly assigning a menu structure (a Dictionary) in your RadialMenuBus.gd script. The menu structure consists of categories, each with optional icons, descriptions, commands, and sub-items (for “outer ring” actions).
