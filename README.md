@@ -52,17 +52,6 @@ Advanced Usage
 - It's possible to make realtime menu constructs procedurally, as long as you follow the example pattern.
 
 
-Notes & Tips
-------------
-- Do not use FontFile resources for text fields; use SystemFont OR FontVariation for proper text wrapping.
-- The default editor example menu construct is safe for previewing and experimentation.
-- All menu animation respects real-world time, unaffected by Engine.time_scale or Framerate.
-
-Troubleshooting
----------------
-- If icons or fonts don't show, check that resource paths are correct.
-- If you want to override commands or add new ones, edit or inherit `RadialMenuBus.gd`.
-
 
 Basic Hard-Coded Usage
 ======================
